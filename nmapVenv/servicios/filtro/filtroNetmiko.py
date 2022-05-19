@@ -12,7 +12,8 @@ class FiltroNetmiko:
     
     @classmethod
     def obtenerOTT(cls,comandoShRun):
-        ott=FuncionesFiltro.filtroOTT(comandoShRun)   
+        ott=FuncionesFiltro.filtroOTT(comandoShRun)
+	
         return ott  
     
     @classmethod

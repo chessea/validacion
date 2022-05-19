@@ -1,4 +1,4 @@
-from servicios.filtro.filtroNetmiko import FiltroNetmiko
+from servicios.filtro.funcionesFiltros import FuncionesFiltro
 from servicios.netmiko.comando import Comando
 from pingDatos.ping import Ping
 from ports.puertos import Puertos
@@ -17,7 +17,7 @@ password=result[1][1]
 
 
 
-with open("/home/Python/proyecto/check/servicio/pingDatos/CAJ-lista2", "r") as datos:
+with open("/home/Python/Test/CAJ-telnet-hosts", "r") as datos:
     lista = [linea.rstrip() for linea in datos]    
 
 
@@ -25,19 +25,17 @@ with open("/home/Python/proyecto/check/servicio/pingDatos/CAJ-lista2", "r") as d
 listaValidada = Ping.ipValidaLista(lista)
 
 
-book =openpyxl.load_workbook('/home/Python/proyecto/validacion/nmapVenv/store/validacion.xlsx')
+book =openpyxl.load_workbook('/home/Python/git-proyect/validacion/nmapVenv/store/validacion.xlsx')
 sheet = book['levantamiento']
 contador=1
 for ip in listaValidada:
     
-    listaComandos=['sh run | exclude !']  
+    listaComandos=['sh run']  
     comando=Comando.enviarComando(listaComandos,ip, usuario, password)
-    shRun=comando
-    
-    
-    ott=FiltroNetmiko.obtenerOTT(shRun)
-    cs=FiltroNetmiko.obtenerCS(shRun)
       
+    ott=FuncionesFiltro.filtroOTT(comando)
+    cs=FuncionesFiltro.filtroCS(comando)
+    print(ott)    
     
     datos=Puertos.validarPuertos(ip)
     contador=contador+1
@@ -49,7 +47,7 @@ for ip in listaValidada:
     sheet[f'E{contador}']=cs
     
     
-    book.save(f'/home/Clientes/CAJ/levantamiento_lista2.xlsx')
+    book.save(f'/home/Clientes/CAJ/levantamientoPruebas.xlsx')
     print('DATOS INGRESADOS') 
                  
 
