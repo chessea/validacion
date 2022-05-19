@@ -1,6 +1,6 @@
 import netmiko
 
-from nmapVenv.netmiko.tipoConexion import TipoConexion
+from servicios.netmiko.tipoConexion import TipoConexion
 
 
 
