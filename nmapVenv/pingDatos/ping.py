@@ -29,13 +29,13 @@ class Ping:
                         ips.append(str(ipNueva))
                     else:
                         pass   
-        '''               
+                       
         for element in ips:
             if element not in result:
                 result.append(element)
                 
-        '''
-        return ips
+        
+        return result
     
 if __name__ =='__main__':
     print(Ping.ipValidaLista())        

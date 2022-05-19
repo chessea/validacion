@@ -4,11 +4,15 @@ import openpyxl
 
 
 
-lista = ['10.0.0.1', '10.0.0.1','8.8.8.8']
+with open("/home/Python/proyecto/check/servicio/pingDatos/CAJ-lista2", "r") as datos:
+    lista = [linea.rstrip() for linea in datos]    
+
+
+
 listaValidada = Ping.ipValidaLista(lista)
 
 
-book =openpyxl.load_workbook('/home/fr/Documentos/validacion/nmapVenv/store/validacion.xlsx')
+book =openpyxl.load_workbook('/home/Python/proyecto/validacion/nmapVenv/store/validacion.xlsx')
 sheet = book['levantamiento']
 contador=1
 for ip in listaValidada:
@@ -20,7 +24,7 @@ for ip in listaValidada:
     sheet[f'C{contador}']=datos[1]
     
     
-    book.save(f'/home/fr/Documentos/validacion/nmapVenv/store/levantamiento.xlsx')
+    book.save(f'/home/Clientes/CAJ/levantamiento_lista2.xlsx')
     print('DATOS INGRESADOS') 
                  
 
