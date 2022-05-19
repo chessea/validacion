@@ -1,6 +1,6 @@
 import os
 
-from nmapVenv.filtro.funcionesFiltros import FuncionesFiltro
+from servicios.filtro.funcionesFiltros import FuncionesFiltro
 
 
 

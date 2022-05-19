@@ -1,5 +1,5 @@
-from nmapVenv.filtro.filtroNetmiko import FiltroNetmiko
-from nmapVenv.netmiko.comando import Comando
+from servicios.filtro.filtroNetmiko import FiltroNetmiko
+from servicios.netmiko.comando import Comando
 from pingDatos.ping import Ping
 from ports.puertos import Puertos
 import openpyxl
